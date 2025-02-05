@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+body{
+    background-color: black;
+  }
+
+.header{
+    background: url("assets/Dilaw\ -\ 3019\ \(Official\ Music\ Video\).gif") no-repeat center center;
+    background-size: cover;
+    height: 550px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#title-heading {
+  color: yellow;
+  padding-top: 200px;
+  font: bolder;
+  font-size: 90px;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#subtitle-heading{
+  color: white;
+}
+
+.nav{
+  background-color: #ffe25f;
+  overflow: hidden;
+  display: flex;
+}
+
+.nav a{
+  text-decoration: none;
+  color: black;
+  padding: 10px 20px;
+  font-size: 20px ;
+  font-weight: 600;
+}
+
+.container{
+  display: flex;
+  padding: 20px;
+  margin-left: 30px;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 20px;
+  gap: 20px;
+}
+
+.sideA{
+  background: black;
+  border-radius: 10px;
+  width: 60%;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.285);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+}
+
+.sideB{
+  background: black;
+  border-radius: 10px;
+  width: 40%;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.285);
+}
+
+.sideA h3 {
+  color: white;
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+
+.sideA img{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.sideA p{
+  color: white;
+  text-align: left;
+  padding-bottom:30px ;
+}
+
+.sideB h3{
+  color: white;
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+
+.sideB h2{
+  color: yellow;
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+
+.sideB video{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .nav{
+    margin: auto;
+  }
+
+  .sideA, .sideB {
+      width: 100%;
+      margin: auto;
+  }
+
+  .sideB video{
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .nav{
+    margin: auto;
+  }
+
+  .nav a{
+    font-size: 12px
+  }
+
+  .sideA, .sideB {
+      width: 100%;
+      margin: auto;
+  }
+
+  .sideB video{
+    width: 200px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .nav{
+    margin: auto;
+  }
+
+  .nav a{
+    font-size: 12px
+  }
+
+  .about, .content {
+      width: 100%;
+  }
+
+  .sideB video{
+    width: 200px;
+    align-items: center;
+  }
+}
