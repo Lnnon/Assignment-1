@@ -169,7 +169,8 @@ body{
   }
 
   .sideB video{
-    width: 200px;
+    width: 300px;
+    align-items: center;
   }
 }
 
@@ -192,7 +193,7 @@ body{
   }
 
   .sideB video{
-    width: 200px;
+    width: 300px;
     align-items: center;
   }
 }
