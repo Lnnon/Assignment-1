@@ -1,0 +1,99 @@
+// App.jsx
+import React, { useState, useEffect } from "react";
+import MovieList from "./components/MovieList";
+import SearchBar from "./components/SearchBar";
+
+const API_KEY = "22f7a7e3"; // Replaced with your OMDb API key
+
+export default function App() {
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("Avengers");
+
+  useEffect(() => {
+    fetchMovies(searchTerm);
+  }, [searchTerm]);
+
+  const fetchMovies = async (query) => {
+    try {
+      const response = await fetch(
+        `https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
+      );
+      const data = await response.json();
+      if (data.Search) {
+        setMovies(data.Search);
+      } else {
+        setMovies([]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch movies:", error);
+    }
+  };
+
+  return (
+    <div className="p-6 font-sans">
+      <h1 className="text-3xl font-bold mb-4">Movie Finder</h1>
+      <SearchBar onSearch={setSearchTerm} />
+      <MovieList movies={movies} />
+    </div>
+  );
+}
+
+// components/SearchBar.jsx
+import React, { useState } from "react";
+
+export default function SearchBar({ onSearch }) {
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.trim()) {
+      onSearch(input);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mb-6">
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Search for movies..."
+        className="p-2 border border-gray-400 rounded mr-2"
+      />
+      <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded">
+        Search
+      </button>
+    </form>
+  );
+}
+
+// components/MovieList.jsx
+import React from "react";
+import MovieCard from "./MovieCard";
+
+export default function MovieList({ movies }) {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {movies.map((movie) => (
+        <MovieCard key={movie.imdbID} movie={movie} />
+      ))}
+    </div>
+  );
+}
+
+// components/MovieCard.jsx
+import React from "react";
+
+export default function MovieCard({ movie }) {
+  return (
+    <div className="border rounded p-4 shadow-md">
+      <img
+        src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/150"}
+        alt={movie.Title}
+        className="w-full h-64 object-cover mb-2"
+      />
+      <h2 className="text-lg font-semibold">{movie.Title}</h2>
+      <p className="text-sm text-gray-600">{movie.Year}</p>
+    </div>
+  );
+}
